@@ -1,0 +1,36 @@
+<div>
+
+  <label for="nombre1">Premier nombre : </label>
+  <input type="number" id="nombre1" [(ngModel)]="nombre1">
+
+  <label for="operateur">Opérateur : </label>
+  <select id="operateur" [(ngModel)]="operateur">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+  </select>
+
+  <label for="nombre2">Deuxième nombre : </label>
+  <input type="number" id="nombre2" [(ngModel)]="nombre2">
+
+  <button (click)="calculer()">Calculer</button>
+
+</div>
+
+<div>
+  <h3><b>Résultat : {{ resultat }}</b></h3>
+</div>
+
+<div>
+  <h2>Historique</h2>
+
+  <ul>
+    <li *ngFor="let calcul of historique.reverse()">
+      <p>
+        <b>{{ calcul.date }} :</b> {{ calcul.nombre1 }} {{ calcul.operateur }} {{ calcul.nombre2 }} = {{ calcul.resultat }}
+        <button (click)="supprimerHistorique(calcul)">Supprimer</button>
+      </p> 
+    </li>
+  </ul>
+</div>
